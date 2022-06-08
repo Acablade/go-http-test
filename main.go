@@ -21,11 +21,6 @@ type Player struct {
 	Rank          uint8  `json:"rank"`
 }
 
-var players = []Player{
-	{Name: "Acablade", UUID: "1", Coins: 32, Rank: 1},
-	{Name: "SaBenOz", UUID: "2", Coins: 18, Rank: 0},
-}
-
 var db *bun.DB
 
 var ctx = context.Background()
@@ -58,7 +53,6 @@ func addPlayer(c *gin.Context) {
 		panic(err)
 	}
 
-	players = append(players, newPlayer)
 	c.IndentedJSON(http.StatusCreated, newPlayer)
 }
 
